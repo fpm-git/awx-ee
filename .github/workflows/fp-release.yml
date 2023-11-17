@@ -27,7 +27,7 @@ jobs:
 
       - name: Insert netaddr into execution-environment.yml
         run: |
-          sed -i '/python: |/a \ \ netaddr' execution-environment.yml
+          sed -i '/python: |$/a \ \ \ \ netaddr' execution-environment.yml
 
       - name: Build image
         env:
