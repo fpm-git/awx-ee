@@ -25,6 +25,10 @@ jobs:
         run: |
           cp fp_tox.ini tox.ini
 
+      - name: Insert netaddr into execution-environment.yml
+        run: |
+          awk '/python: \|$/{print;print "  netaddr";next}1' execution-environment.yml > temp.yml && mv temp.yml execution-environment.yml
+
       - name: Build image
         env:
           DOCKER_BUILDKIT: 1
