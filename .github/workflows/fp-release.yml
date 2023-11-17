@@ -1,4 +1,4 @@
-name: Release
+name: FP-Release
 
 on:
   release:
@@ -21,6 +21,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install tox
 
+      - name: Replace default tox.ini with custom version
+        run: |
+          cp fp_tox.ini tox.ini
+
       - name: Build image
         env:
           DOCKER_BUILDKIT: 1
@@ -41,6 +45,5 @@ jobs:
 
       - name: Push images
         run: |
-         echo "${{ secrets.QUAY_TOKEN }}" | docker login quay.io -u ${{ secrets.QUAY_USERNAME }} --password-stdin
          docker push ghcr.io/fpm-git/awx-ee:${{ github.event.release.tag_name }}
          docker push ghcr.io/fpm-git/awx-ee:latest
