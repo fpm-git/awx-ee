@@ -1,0 +1,24 @@
+name: Sync to Upstream
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+
+jobs:
+  sync_with_upstream:
+    runs-on: ubuntu-latest
+    name: Sync HEAD with upstream latest
+
+    steps:
+    - name: Checkout HEAD
+      uses: actions/checkout@v2
+      with:
+        ref: devel
+
+    - name: Pull upstream changes
+      id: sync
+      uses: bdougie/Fork-Sync-With-Upstream-action@fork
+      with:
+        upstream_repository: ansible/awx-ee
+        upstream_branch: devel
+        target_branch: devel
