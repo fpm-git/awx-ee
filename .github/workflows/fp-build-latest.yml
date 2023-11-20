@@ -1,4 +1,4 @@
-name: Build and Push latest image
+name: FP Build and Push latest image
 
 on:
   push:
