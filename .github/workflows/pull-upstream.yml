@@ -15,6 +15,10 @@ jobs:
       with:
         ref: devel
 
+    - name: Set Git Pull Strategy
+      run: git config pull.rebase false
+
+
     - name: Pull upstream changes
       id: sync
       uses: bdougie/Fork-Sync-With-Upstream-action@fork
