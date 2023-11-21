@@ -21,8 +21,9 @@ jobs:
 
     - name: Pull upstream changes
       id: sync
-      uses: bdougie/Fork-Sync-With-Upstream-action@fork
+      uses: bdougie/Fork-Sync-With-Upstream-action@v3.4
       with:
-        upstream_repository: ansible/awx-ee
-        upstream_branch: devel
-        target_branch: devel
+        target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+        upstream_sync_repo: ansible/awx-ee
+        upstream_sync_branch: devel
+        target_sync_branch: devel
