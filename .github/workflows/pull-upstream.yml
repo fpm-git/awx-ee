@@ -18,10 +18,9 @@ jobs:
     - name: Set Git Pull Strategy
       run: git config pull.rebase false
 
-
-    - name: Pull upstream changes
+    - name: Upstream Sync
+      uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
       id: sync
-      uses: bdougie/Fork-Sync-With-Upstream-action@v3.4
       with:
         target_repo_token: ${{ secrets.GITHUB_TOKEN }}
         upstream_sync_repo: ansible/awx-ee
